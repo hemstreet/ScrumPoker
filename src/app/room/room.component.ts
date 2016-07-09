@@ -11,7 +11,5 @@ export class RoomComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Hello Room');
   }
-
 }

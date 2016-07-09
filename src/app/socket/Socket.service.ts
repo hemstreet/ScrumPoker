@@ -19,6 +19,7 @@ export class SocketService {
       console.log('connect');
     });
 
+    // Save our socket for later
     this.socket = socket;
   }
   getSocket() {
