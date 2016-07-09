@@ -1,0 +1,15 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "author": "Jon Hemstreet <jon@hemstreet.io>",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "http": "0.0.0",
+    "yargs": "^4.7.1"
+  }
+}
