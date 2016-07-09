@@ -1,1 +1,1 @@
-export * from './Socket.service.ts'
+export * from './Socket.service'
