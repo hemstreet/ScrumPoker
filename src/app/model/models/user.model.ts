@@ -1,5 +1,5 @@
-import { Vote } from './vote.model';
-import { Team } from './team.model';
+import { Vote, Team } from '../';
+
 export class User {
   team: Team;
   name: string;

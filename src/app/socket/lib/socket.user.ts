@@ -7,6 +7,6 @@ export class SocketUser {
     this.initializeListeners();
   }
   initializeListeners() {
-    console.log('initialize socket user');
+    // this.socket.on('', () => {})
   }
 }

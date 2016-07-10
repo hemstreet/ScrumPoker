@@ -1,5 +1,5 @@
-import { Vote } from './vote.model';
-import { User } from './user.model';
+import { Vote, User } from '../';
+
 export class Room {
   id: number;
   totalVote: Vote[];

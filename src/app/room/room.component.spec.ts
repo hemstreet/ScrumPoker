@@ -14,10 +14,4 @@ describe('Room Component', () => {
 
   beforeEachProviders(() => []);
 
-  it('should ...', async(inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-    tcb.createAsync(RoomComponent).then((fixture) => {
-      fixture.detectChanges();
-    });
-  })));
-
 });
