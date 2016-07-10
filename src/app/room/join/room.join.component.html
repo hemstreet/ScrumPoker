@@ -1,8 +1,14 @@
 Join Room
 
 <form (submit)="submit()">
-  <input type="text" [placeholder]="model.usernamePlaceholder" class="form-control" required
-         [(ngModel)]="model.username" >
-  <input type="text" [placeholder]="model.roomIdPlaceholder" class="form-control" required
-         [(ngModel)]="model.id" >
+  <input type="text"
+         class="form-control"
+         [placeholder]="model.usernamePlaceholder"
+         [(ngModel)]="model.username"
+         required>
+  <input type="text"
+         class="form-control"
+         [placeholder]="model.roomIdPlaceholder"
+         [(ngModel)]="model.id"
+         required>
 </form>

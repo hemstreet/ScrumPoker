@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/common';
 import { User } from '../../shared/models/user.model';
+import { RoomJoinViewModel } from './room.join.viewmodel';
+import { TranslationService } from '../../translation';
 
 // goToPage() { this.router.navigate(['/heroes']); }
 @Component({
@@ -10,16 +11,18 @@ import { User } from '../../shared/models/user.model';
 })
 
 export class JoinRoomComponent {
-  joinRoomForm: any;
-  constructor(formBuilder: FormBuilder) {
-    this.joinRoomForm = formBuilder.group({
-      username: ["", Validators.required],
-      room: ["", Validators.required]
-    });
+  model: RoomJoinViewModel;
+  constructor(
+    private translationService: TranslationService) {
+    this.model = new RoomJoinViewModel();
+
+    this.model.roomIdPlaceholder = this.translationService.get('common.usernameLabel');
+    this.model.usernamePlaceholder = this.translationService.get('common.roomLabel');
   }
 
-  joinRoom(event) {
-    console.log(this.joinRoomForm.value);
+  submit(event) {
+    console.log(this.model);
+    event.preventDefault();
   }
   goToRoom(id: number, user: User) {
     // this.router.navigate(['/room', id], { queryParams: { name: user.name });

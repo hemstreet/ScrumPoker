@@ -1,6 +1,9 @@
 Create room
 
 <form (submit)="submit()">
-  <input type="text" [placeholder]="model.usernamePlaceholder" class="form-control" required
-       [(ngModel)]="model.username" >
+  <input type="text"
+         class="form-control"
+         [placeholder]="model.usernamePlaceholder"
+         [(ngModel)]="model.username"
+         required>
 </form>

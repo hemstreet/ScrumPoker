@@ -25,12 +25,12 @@ import '../style/app.scss';
 export class AppComponent implements OnInit {
   model: AppViewModel;
   constructor(
-    private socket: SocketService,
-    private translation: TranslationService) {
+    private socketService: SocketService,
+    private translationService: TranslationService) {
   };
 
   ngOnInit() {
     this.model = new AppViewModel();
-    this.model.title = this.translation.get(<string>'common.title');
+    this.model.title = this.translationService.get('common.title');
   }
 }

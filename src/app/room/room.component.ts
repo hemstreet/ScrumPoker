@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { RoomService } from './';
-import { User } from '../shared/models/user.model';
+// import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'room',
@@ -18,7 +18,6 @@ export class RoomComponent implements OnInit, OnDestroy {
     private router: Router,
     private roomService: RoomService) {
 
-    console.log('room component');
     console.log('inside room', this.id);
 
     // let user = new User();
@@ -28,7 +27,7 @@ export class RoomComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log('room on initi');
+    console.log('room on init');
     this.sub = this.router
       .routerState
       .queryParams
