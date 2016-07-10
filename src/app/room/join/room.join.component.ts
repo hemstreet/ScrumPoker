@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { User } from '../../shared/models/user.model';
+import { User } from '../../shared/models';
 import { RoomJoinViewModel } from './room.join.viewmodel';
 import { TranslationService } from '../../translation';
 
-// goToPage() { this.router.navigate(['/heroes']); }
 @Component({
   selector: 'joinRoom',
   templateUrl: './room.join.component.html',
@@ -16,15 +15,17 @@ export class JoinRoomComponent {
     private translationService: TranslationService) {
     this.model = new RoomJoinViewModel();
 
-    this.model.roomIdPlaceholder = this.translationService.get('common.usernameLabel');
-    this.model.usernamePlaceholder = this.translationService.get('common.roomLabel');
+    this.model.usernamePlaceholder = this.translationService.get('common.usernameLabel');
+    this.model.roomIdPlaceholder = this.translationService.get('common.roomLabel');
   }
 
-  submit(event) {
-    console.log(this.model);
-    event.preventDefault();
+  submit() {
+    // console.log(this.model);
+
+    this.goToRoom(this.model.roomId);
+    return false;
   }
-  goToRoom(id: number, user: User) {
+  goToRoom(id: number) {
     // this.router.navigate(['/room', id], { queryParams: { name: user.name });
   }
 }

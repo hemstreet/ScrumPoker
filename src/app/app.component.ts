@@ -8,10 +8,6 @@ import { AppViewModel } from './app.component.viewmodel';
 
 import '../style/app.scss';
 
-/*
- * App Component
- * Top Level Component
- */
 @Component({
   selector: 'appComponent',
   providers: [

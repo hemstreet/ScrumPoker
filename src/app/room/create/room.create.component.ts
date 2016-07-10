@@ -16,8 +16,9 @@ export class CreateRoomComponent {
     this.model.usernamePlaceholder = this.translationService.get('common.usernameLabel');
   }
 
-  submit(event) {
-    console.log(this.model);
-    event.preventDefault();
+  submit() {
+    // console.log(this.model);
+
+    return false;
   }
 }

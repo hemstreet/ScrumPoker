@@ -1,5 +1,4 @@
-import { Vote } from '../shared/models/vote.model';
-import { User } from '../shared/models/user.model';
+import { Vote, User } from '../shared/models';
 export class VoteService {
   constructor() {
 

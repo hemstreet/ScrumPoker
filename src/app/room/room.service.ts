@@ -1,5 +1,4 @@
-import { Room } from '../shared/models/room.model';
-import { User } from '../shared/models/user.model';
+import { Room, User } from '../shared/models';
 import { SocketService } from '../socket/Socket.service';
 import { config } from '../shared/config/config';
 

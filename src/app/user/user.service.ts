@@ -1,4 +1,4 @@
-import { User } from '../shared/models/user.model';
+import { User } from '../shared/models';
 import { SocketService } from '../socket';
 import { config } from '../shared/config';
 export class UserService {
