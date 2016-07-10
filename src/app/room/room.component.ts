@@ -1,15 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { RoomService } from './';
+import { UserService } from '../user';
+import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'room',
+  providers: [
+    RoomService,
+    UserService
+  ],
   templateUrl: './room.component.html',
   styleUrls: ['./room.component.scss']
 })
-export class RoomComponent implements OnInit {
+export class RoomComponent {
 
-  constructor() {
-  }
+  constructor(
+    private roomService: RoomService,
+    private userService: UserService
+  ) {
 
-  ngOnInit() {
+    let user = new User();
+    let id = 1; // Get room number from the url
+
+    this.roomService.join(<number>id, <User>user);
   }
 }

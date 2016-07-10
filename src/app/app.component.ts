@@ -3,6 +3,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { SocketService } from './socket';
 import { TranslationService } from './translation';
+
 import { AppViewModel } from './app.component.viewmodel';
 
 import '../style/app.scss';
@@ -13,7 +14,10 @@ import '../style/app.scss';
  */
 @Component({
   selector: 'appComponent',
-  providers: [SocketService, TranslationService],
+  providers: [
+    SocketService,
+    TranslationService
+  ],
   directives: [...ROUTER_DIRECTIVES],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -28,6 +32,5 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.model = new AppViewModel();
     this.model.title = this.translation.get(<string>'common.title');
-    // console.log(this.socket.getSocket());
   }
 }

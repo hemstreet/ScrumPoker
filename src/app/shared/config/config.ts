@@ -1,7 +1,7 @@
 class Config {
   config: any;
   constructor() {
-    this.config = require('../../config/config.json');
+    this.config = require('./config.json');
   }
   get() {
     return this.config;

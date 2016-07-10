@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 let io = require('socket.io-client');
-import { config } from '../shared/config';
+import { config } from '../shared/config/config';
 
 import { SocketRoom } from './lib/socket.room';
 import { SocketUser } from './lib/socket.user';
@@ -27,7 +27,11 @@ export class SocketService {
     // Save our socket for later
     this.socket = socket;
   }
-  getSocket() {
-    return this.socket;
+  emit(name: string, data: any) {
+    this.socket.emit(name, data);
   }
+  on(name: string, callback: any) {
+    this.socket.on(name, callback);
+  }
+
 }

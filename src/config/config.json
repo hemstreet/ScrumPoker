@@ -1,7 +1,0 @@
-{
-  "socketServer": "http://localhost:3031",
-  "language" : {
-    "default" : "en-us",
-    "available" : ["en-us"]
-  }
-}

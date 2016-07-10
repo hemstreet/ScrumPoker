@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { config } from '../shared/config';
+import { config } from '../shared/config/config';
 
 @Injectable()
 export class TranslationService {
