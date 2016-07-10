@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 let io = require('socket.io-client');
-import { config } from '../shared/config/config';
+import { config } from '../config/config';
 
 import { SocketRoom } from './lib/socket.room';
 import { SocketUser } from './lib/socket.user';

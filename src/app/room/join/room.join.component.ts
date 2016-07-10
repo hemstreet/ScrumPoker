@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { User } from '../../shared/models';
 import { RoomJoinViewModel } from './room.join.viewmodel';
 import { TranslationService } from '../../translation';
+
+//import { User } from '../../model';
 
 @Component({
   selector: 'joinRoom',

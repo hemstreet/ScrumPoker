@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { config } from '../shared/config/config';
+import { config } from '../config/config';
 
 @Injectable()
 export class TranslationService {
@@ -19,7 +19,7 @@ export class TranslationService {
     this.languages = [];
 
     this.config.language.available.forEach(function(fileName) {
-      this.languages[fileName] = require('./languages/' + fileName + '.json');
+      this.languages[fileName] = require('../config/languages/' + fileName + '.json');
     }.bind(this));
 
     this.setLanguage(this.config.language.default);

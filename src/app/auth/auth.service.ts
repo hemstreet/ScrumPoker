@@ -1,4 +1,4 @@
-import { User } from '../shared/models'
+import { User } from '../model'
 export class AuthService {
   constructor() {
   }

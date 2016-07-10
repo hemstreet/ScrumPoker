@@ -1,6 +1,6 @@
-import { User } from '../shared/models';
+import { User } from '../model';
 import { SocketService } from '../socket';
-import { config } from '../shared/config';
+import { config } from '../config';
 export class UserService {
   config: any;
   userEvents: any;

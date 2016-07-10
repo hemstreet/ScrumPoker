@@ -1,6 +1,6 @@
-import { Room, User } from '../shared/models';
+import { Room, User } from '../model';
 import { SocketService } from '../socket/Socket.service';
-import { config } from '../shared/config/config';
+import { config } from '../config/config';
 
 export class RoomService {
   config: any;
