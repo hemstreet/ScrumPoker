@@ -17,7 +17,7 @@ function createWindow () {
   mainWindow = new BrowserWindow(config.browserWindow)
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`http://localhost:8080/#/`)
+  mainWindow.loadURL(config.host)
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()

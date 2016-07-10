@@ -1,0 +1,7 @@
+Join Room
+
+<form [ngFormModel]="joinRoomForm" (submit)="joinRoom($event)">
+  <input ngControl="username" type="text" placeholder="Your Username">
+  <input ngControl="room" type="number" placeholder="Room Number">
+  <button type="submit">Join</button>
+</form>

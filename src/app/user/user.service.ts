@@ -9,7 +9,6 @@ export class UserService {
     this.userEvents = this.config.events.user;
   }
   getUser(id: number): User {
-
     this.socketService.emit(this.userEvents,  {
       id: id
     });
