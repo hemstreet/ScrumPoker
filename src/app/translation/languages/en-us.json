@@ -1,3 +1,5 @@
 {
-  "common.title": "Scrum Poker"
+  "common.title": "Scrum Poker",
+  "common.usernameLabel": "Username",
+  "common.roomLabel": "Room Number"
 }

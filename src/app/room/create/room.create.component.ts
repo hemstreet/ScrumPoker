@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/common';
+import { RoomCreateViewModel } from './room.create.viewmodel';
+import { TranslationService } from '../../translation';
 
 @Component({
   selector: 'createRoom',
@@ -8,16 +9,15 @@ import { FormBuilder, Validators } from '@angular/common';
 })
 
 export class CreateRoomComponent {
-  createRoomForm: any;
+  model: RoomCreateViewModel;
   constructor(
-    formBuilder: FormBuilder) {
-    this.createRoomForm = formBuilder.group({
-      username: ["", Validators.required]
-    });
+    private translationService: TranslationService) {
+    this.model = new RoomCreateViewModel();
+    this.model.usernamePlaceholder = this.translationService.get('common.usernameLabel');
   }
 
-  createRoom(event) {
-    console.log(event, this.createRoomForm.value);
+  submit(event) {
+    console.log(this.model);
     event.preventDefault();
   }
 }

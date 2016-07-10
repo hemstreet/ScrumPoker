@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateRoomComponent, JoinRoomComponent } from '../room'
+import { CreateRoomComponent, JoinRoomComponent } from '../room';
 @Component({
   selector: 'home',
   directives: [

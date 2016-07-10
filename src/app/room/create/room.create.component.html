@@ -1,6 +1,6 @@
 Create room
 
-<form [ngFormModel]="createRoomForm" (submit)="createRoom($event)">
-  <input ngControl="username" type="text" placeholder="Your Username">
-  <button type="submit">Create</button>
+<form (submit)="submit()">
+  <input type="text" [placeholder]="model.usernamePlaceholder" class="form-control" required
+       [(ngModel)]="model.username" >
 </form>
