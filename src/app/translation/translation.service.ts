@@ -24,8 +24,11 @@ export class TranslationService {
 
     this.setLanguage(this.config.language.default);
   }
-  get(key: string): string {
-    return <string>this.languages[this.activeLanguage][key];
+  get(key: string, domain: string): string {
+
+    let translationEntry = this.languages[this.activeLanguage][domain][key];
+
+    return <string>(translationEntry) ? translationEntry : `[${domain} . ${key}]`;
   }
 
   setLanguage(key: string) {

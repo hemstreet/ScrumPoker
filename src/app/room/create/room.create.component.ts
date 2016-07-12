@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RoomCreateViewModel } from './room.create.viewmodel';
-import { TranslationService } from '../../translation';
 
 @Component({
   selector: 'createRoom',
@@ -10,10 +9,8 @@ import { TranslationService } from '../../translation';
 
 export class CreateRoomComponent {
   model: RoomCreateViewModel;
-  constructor(
-    private translationService: TranslationService) {
+  constructor() {
     this.model = new RoomCreateViewModel();
-    this.model.usernamePlaceholder = this.translationService.get('common.usernameLabel');
   }
 
   submit() {

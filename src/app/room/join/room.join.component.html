@@ -3,12 +3,12 @@ Join Room
 <form (submit)="submit()">
   <input type="text"
          class="form-control"
-         [placeholder]="model.usernamePlaceholder"
+         placeholder="{{ 'usernameLabel' | translate: 'common' }}"
          [(ngModel)]="model.username"
          required>
   <input type="number"
          class="form-control"
-         [placeholder]="model.roomIdPlaceholder"
+         placeholder="{{ 'roomLabel' | translate: 'common' }}"
          [(ngModel)]="model.roomId"
          required>
   <input type="submit" value="Submit"/>

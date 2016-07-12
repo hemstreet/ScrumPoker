@@ -1,11 +1,11 @@
 <header>
   <nav>
     <a [routerLink]="['/']">Home</a>
-    <a [routerLink]="['/room/1']">Room</a>
+    <a [routerLink]="['room', {id: 1}]">Room</a>
   </nav>
 </header>
 <main>
-  <h1 class="title">{{model.title}}!</h1>
+  <h1 class="title">{{ 'title' | translate: 'common' }}</h1>
 
   <!-- Images (and assets) are parsed and loaded from within the public directory -->
   <!--<img src="/img/angular.png">-->

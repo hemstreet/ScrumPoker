@@ -1,6 +1,7 @@
 {
-  "common.title": "Spanish Scrum Planning",
-  "common.usernameLabel": "Spanish Username",
-  "common.roomLabel": "Spanish Room Number"
+  "common" : {
+    "title" : "Sp Scrum Poker",
+    "usernameLabel": "Sp Username",
+    "roomLabel": "Sp Room Number"
+  }
 }
-

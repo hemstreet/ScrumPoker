@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { SocketService } from './socket';
-import { TranslationService } from './translation';
 
 import { AppViewModel } from './app.component.viewmodel';
 
 import '../style/app.scss';
+
+import { TranslationService } from './translation';
 
 @Component({
   selector: 'appComponent',
@@ -21,12 +22,10 @@ import '../style/app.scss';
 export class AppComponent implements OnInit {
   model: AppViewModel;
   constructor(
-    private socketService: SocketService,
-    private translationService: TranslationService) {
+    private socketService: SocketService) {
   };
 
   ngOnInit() {
     this.model = new AppViewModel();
-    this.model.title = this.translationService.get('common.title');
   }
 }
