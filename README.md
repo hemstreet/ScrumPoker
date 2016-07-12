@@ -1,3 +1,6 @@
+Setup
+=====
+
 To run angular.
 `npm start` from root
 
@@ -7,5 +10,7 @@ To run the electron app,
 To run socket server
 `npm start` inside *~/server/*
 
-{{md  ./docs/_tableOfContents.md }}
+Table Of Contents
+===
+* [Translations](./docs/translations.md)
 
