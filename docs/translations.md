@@ -1,4 +1,4 @@
-(Index)[../README.md]
+[Index](../README.md)
 
 Translations
 ============
