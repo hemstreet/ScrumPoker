@@ -6,3 +6,5 @@ To run the electron app,
 
 To run socket server
 `npm start` inside *~/server/*
+
+(Translations)[./docs/translations.md]
