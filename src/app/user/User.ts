@@ -1,4 +1,4 @@
-import { Vote, Team } from '../';
+import { Vote, Team } from '../model';
 
 export class User {
   team: Team;

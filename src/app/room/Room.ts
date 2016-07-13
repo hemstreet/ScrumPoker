@@ -1,4 +1,4 @@
-import { Vote, User } from '../';
+import { Vote, User } from '../model';
 
 export class Room {
   id: number;

@@ -1,0 +1,3 @@
+[submodule "MEAN-Street"]
+	path = MEAN-Street
+	url = https://github.com/hemstreet/MEAN-Street.git
