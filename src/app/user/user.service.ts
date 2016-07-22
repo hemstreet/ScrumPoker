@@ -1,6 +1,9 @@
+import { Injectable } from '@angular/core';
 import { User } from '../model';
 import { SocketService } from '../socket';
 import { config } from '../config';
+
+@Injectable()
 export class UserService {
   config: any;
   userEvents: any;

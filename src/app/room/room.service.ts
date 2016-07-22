@@ -1,14 +1,15 @@
+import { Injectable } from '@angular/core';
 import { Room, User } from '../model';
 import { SocketService } from '../socket/Socket.service';
 import { config } from '../config/config';
 
+@Injectable()
 export class RoomService {
   config: any;
   roomEvents: any;
   constructor(private socket: SocketService) {
     this.config = config.config;
     this.roomEvents = this.config.events.room;
-    console.log(config.config);
   }
   userCanJoinRoom(): boolean {
     // Check to see if the user has access to join that teams room

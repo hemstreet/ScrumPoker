@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RoomJoinViewModel } from './room.join.viewmodel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'joinRoom',
@@ -9,17 +10,11 @@ import { RoomJoinViewModel } from './room.join.viewmodel';
 
 export class JoinRoomComponent {
   model: RoomJoinViewModel;
-  constructor() {
+  constructor(private router: Router) {
     this.model = new RoomJoinViewModel();
   }
 
   submit() {
-    // console.log(this.model);
-
-    this.goToRoom(this.model.roomId);
-    return false;
-  }
-  goToRoom(id: number) {
-     // this.router.navigate(['/room', id]);
+    this.router.navigate(['/room', this.model.roomId]);
   }
 }

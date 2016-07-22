@@ -1,42 +1,28 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { RoomService } from './';
+import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { RoomService } from './room.service';
 // import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'room',
-  providers: [
-    // RoomService
-  ],
   templateUrl: './room.component.html',
-  styleUrls: ['./room.component.scss']
+  styleUrls: ['./room.component.scss'],
+  providers: [
+    RoomService
+  ]
 })
-export class RoomComponent implements OnInit, OnDestroy {
+
+export class RoomComponent {
   id: number;
-  private sub: any;
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private roomService: RoomService) {
 
-    console.log('inside room', this.id);
+    this.id = +this.route.snapshot.params['id'];
+    console.log(this.roomService.getRoom(this.id));
 
     // let user = new User();
-    // let id = 1; // Get room number from the url
-
     // this.roomService.join(<number>id, <User>user);
-  }
-
-  ngOnInit() {
-    console.log('room on init');
-    this.sub = this.router
-      .routerState
-      .queryParams
-      .subscribe(params => {
-        this.id = <number>+params['id'];
-      });
-  }
-
-  ngOnDestroy() {
-    // this.sub.unsubscribe();
   }
 }

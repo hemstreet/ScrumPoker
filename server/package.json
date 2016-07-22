@@ -9,7 +9,9 @@
   },
   "license": "ISC",
   "dependencies": {
-    "http": "0.0.0",
+    "express": "^4.14.0",
+    "passport": "^0.3.2",
+    "q": "^1.4.1",
     "yargs": "^4.7.1"
   }
 }

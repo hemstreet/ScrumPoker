@@ -8,7 +8,7 @@ To run the electron app,
 `npm start` inside *~/electron/*
 
 To run socket server
-`npm start` inside *~/server/*
+`npm start` inside *~/socketServer/*
 
 Table Of Contents
 ===
