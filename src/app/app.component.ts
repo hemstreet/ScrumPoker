@@ -8,12 +8,16 @@ import { AppViewModel } from './app.component.viewmodel';
 import '../style/app.scss';
 
 import { TranslationService } from './translation';
+import { UserService } from './user';
+import { VoteService } from './vote';
 
 @Component({
   selector: 'appComponent',
   providers: [
     SocketService,
-    TranslationService
+    TranslationService,
+    UserService,
+    VoteService
   ],
   directives: [...ROUTER_DIRECTIVES],
   templateUrl: './app.component.html',

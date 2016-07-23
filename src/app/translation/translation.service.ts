@@ -25,10 +25,20 @@ export class TranslationService {
     this.setLanguage(this.config.language.default);
   }
   get(key: string, domain: string): string {
+    let translationEntry = null;
 
-    let translationEntry = this.languages[this.activeLanguage][domain][key];
-
-    return <string>(translationEntry) ? translationEntry : `[${domain} . ${key}]`;
+    try {
+      translationEntry = this.languages[this.activeLanguage][domain][key];
+    } catch (err) {
+      translationEntry = `[${domain} . ${key}]`;
+      console.error('ERROR: Could not access translation key:',
+        domain,
+        key,
+        'for config/languages/' + this.activeLanguage + '.json',
+        'ensure it has been created for this language');
+      console.error(err);
+    }
+    return <string>translationEntry;
   }
 
   setLanguage(key: string) {

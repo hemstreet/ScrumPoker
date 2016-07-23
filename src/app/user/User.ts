@@ -1,6 +1,6 @@
-import { Vote, Team } from '../model';
+import { Base, Vote, Team } from '../model';
 
-export class User {
+export class User extends Base {
   team: Team;
   name: string;
   vote: Vote;

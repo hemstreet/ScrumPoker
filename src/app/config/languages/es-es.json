@@ -3,5 +3,8 @@
     "title" : "Sp Scrum Poker",
     "usernameLabel": "Sp Username",
     "roomLabel": "Sp Room Number"
+  },
+  "home": {
+    "title" : "Sp Home"
   }
 }

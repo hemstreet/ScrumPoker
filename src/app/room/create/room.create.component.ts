@@ -14,7 +14,7 @@ export class CreateRoomComponent {
   }
 
   submit() {
-    // console.log(this.model);
+    console.log(this.model);
 
     return false;
   }

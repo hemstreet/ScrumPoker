@@ -24,7 +24,9 @@ export class RoomService {
   }
 
   create(user: User): Room {
-    let room = new Room();
+    let room = new Room({
+      id: 123
+    });
 
     return room;
   }
@@ -33,7 +35,9 @@ export class RoomService {
     this.socket.emit(this.roomEvents.getRooms, {});
 
     // @TODO Make this logic come back from an observable from socketService
-    let rooms = [new Room()];
+    let rooms = [new Room({
+      id: 1
+    })];
     return rooms;
 
   }
@@ -43,7 +47,9 @@ export class RoomService {
     });
 
     // @TODO make this logic come back from an observable from socketService
-    let room = new Room();
+    let room = new Room({
+      id: 1
+    });
     return room;
   }
 }

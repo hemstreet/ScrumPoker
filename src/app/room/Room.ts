@@ -1,6 +1,6 @@
-import { Vote, User } from '../model';
+import { Base, Vote, User } from '../model';
 
-export class Room {
+export class Room extends Base {
   id: number;
   totalVote: Vote[];
   users: User[];

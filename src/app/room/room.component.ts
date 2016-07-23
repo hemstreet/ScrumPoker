@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RoomService } from './room.service';
-// import { User } from '../shared/models/user.model';
+import {VoteComponent} from '../vote/vote.component';
+import { UserListComponent } from '../user';
 
 @Component({
   selector: 'room',
@@ -9,6 +10,10 @@ import { RoomService } from './room.service';
   styleUrls: ['./room.component.scss'],
   providers: [
     RoomService
+  ],
+  directives: [
+    VoteComponent,
+    UserListComponent
   ]
 })
 
@@ -20,7 +25,6 @@ export class RoomComponent {
     private roomService: RoomService) {
 
     this.id = +this.route.snapshot.params['id'];
-    console.log(this.roomService.getRoom(this.id));
 
     // let user = new User();
     // this.roomService.join(<number>id, <User>user);

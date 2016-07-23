@@ -7,13 +7,28 @@
       "es-es"
     ]
   },
+  "voteValues" : [
+    "1",
+    "2",
+    "3",
+    "5",
+    "8",
+    "13",
+    "21",
+    "40",
+    "80",
+    "∞",
+    "N/A"
+  ],
   "events" : {
     "room": {
       "getRoomById": "ROOM:getById",
       "getRooms" : "ROOM:getRooms"
     },
     "user" : {
-      "getUserById" : "USER:getUserById"
+      "getUserById" : "USER:getUserById",
+      "userDidJoinById" : "USER:didJoinRoomById",
+      "userDidVote" : "USER:didVote"
     }
   }
 }
