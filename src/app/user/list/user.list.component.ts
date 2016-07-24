@@ -12,7 +12,7 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) {
   }
   userClicked(user: User) {
-    console.log(user);
+    this.userService.kickUser(1, user);
   }
   ngOnInit() {
     this.users = this.userService.getUserList();
