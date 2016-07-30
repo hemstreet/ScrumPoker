@@ -1,0 +1,20 @@
+{
+  "name": "scrum poker",
+  "homepage": "https://github.com/hemstreet/ScrumPoker",
+  "authors": [
+    "Jon Hemstreet <jon@hemstreet.io>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
