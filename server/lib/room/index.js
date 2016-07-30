@@ -1,25 +1,11 @@
 var q = require('q');
-module.exports = class Room {
+var Base = require('../Base');
+module.exports = class Room extends Base {
   constructor(config, socket) {
+    super();
     this.config = config;
     this.socket = socket;
-    this.initializeEvents();
-  }
-  initializeEvents() {
-    let roomEvents = this.config.events.room;
-
-    Object.keys(roomEvents).forEach((key) => {
-      let event = roomEvents[key];
-      this.socket.on(event, (data) => {
-        try {
-          this[event.split(':')[1]](data).then((data) => {
-            this.socket.emit(event.replace('will', 'did'), data);
-          });
-        } catch(err) {
-          console.log(err, event);
-        }
-      });
-    });
+    this.initializeListeners('room');
   }
 
   willCreate(data) {
@@ -27,6 +13,7 @@ module.exports = class Room {
     console.log('Stubbed method willCreate');
     //  do logic, return deferred
     deferred.resolve(data);
+
     return deferred.promise;
   }
   willJoin(data) {
@@ -37,11 +24,25 @@ module.exports = class Room {
     return deferred.promise;
   }
 
-  willGetRoomById(data) {
+  willGetById(data) {
     var deferred = q.defer();
-    console.log('Stubbed method willGetRoomById');
+
+    let room = [];
+    room.id = data.id;
+    room.users = [
+      {
+        name: "Test user"
+      },
+      {
+        name: "Test user 2"
+      },
+      {
+        name: "Test user 3"
+      }
+    ];
+    console.log('Stubbed method ROOM:willGetById');
     //  do logic, return deferred
-    deferred.resolve(data);
+    deferred.resolve(room);
     return deferred.promise;
   }
 

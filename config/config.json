@@ -6,8 +6,8 @@
       "didCreate": "ROOM:didCreate",
       "willJoin": "ROOM:willJoin",
       "didJoin": "ROOM:didJoin",
-      "willGetRoomById": "ROOM:willGetById",
-      "didGetRoomById": "ROOM:didlGetById",
+      "willGetById": "ROOM:willGetById",
+      "didGetById": "ROOM:didGetById",
       "willGetRooms" : "ROOM:willGetRooms",
       "didGetRooms" : "ROOM:didGetRooms"
     },
@@ -16,9 +16,14 @@
       "end": "disconnect"
     },
     "user" : {
-      "getUserById" : "USER:getUserById",
-      "userDidJoinById" : "USER:didJoinRoomById",
-      "userDidVote" : "USER:didVote"
+      "willGetById" : "USER:willGetById",
+      "didGetById" : "USER:didGetRoomById",
+      "willJoinById" : "USER:willJoinRoomById",
+      "didJoinById" : "USER:didJoinRoomById",
+      "willVote" : "USER:willVote",
+      "didVote" : "USER:didVote",
+      "willKick": "USER:willKick",
+      "didKick": "USER:didKick"
     }
   }
 }

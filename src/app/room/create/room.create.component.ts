@@ -36,6 +36,6 @@ export class CreateRoomComponent {
   }
 
   didCreate(data) {
-
+    console.log(this.roomEvents.didCreate, data);
   }
 }

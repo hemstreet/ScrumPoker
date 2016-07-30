@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../model';
 import { UserService } from '../user.service';
+import { SocketService } from '../../socket';
+import { config } from '../../config';
 
 @Component({
   selector: 'userList',
@@ -9,12 +11,20 @@ import { UserService } from '../user.service';
 })
 export class UserListComponent implements OnInit {
   users: User[];
-  constructor(private userService: UserService) {
+  socket: SocketService;
+  config: any;
+  constructor(
+    private userService: UserService,
+    private socketService: SocketService) {
+    this.config = config.config;
+    this.socket = socketService.get();
   }
   userClicked(user: User) {
     this.userService.kickUser(1, user);
   }
   ngOnInit() {
-    this.users = this.userService.getUserList();
+    this.userService.getUserListByRoomId(3).then((data) => {
+      console.log('getUserListById promise', 3, data);
+    });
   }
 }

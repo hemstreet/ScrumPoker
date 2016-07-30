@@ -21,7 +21,7 @@ export class SocketService {
     socket.user = new SocketUser(socket, this.config);
 
     socket.on('connect', function() {
-      // Run connection logic
+      // Listen fo connect event
     });
 
     // Save our socket for later

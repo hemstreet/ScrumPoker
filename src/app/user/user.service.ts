@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 import { User } from '../model';
 import { SocketService } from '../socket';
 import { config } from '../config';
@@ -6,10 +7,12 @@ import { config } from '../config';
 @Injectable()
 export class UserService {
   config: any;
+  socket: SocketService;
   userEvents: any;
   currentUser: User;
   constructor(private socketService: SocketService) {
     this.config = config.config;
+    this.socket = this.socketService.get();
     this.userEvents = this.config.events.user;
     this.initializeUser();
   }
@@ -36,19 +39,22 @@ export class UserService {
     return this.currentUser;
   }
 
-  getUserList(): User[] {
-    return  [new User({
-      name: 'test'
-    }), new User({
-      name: 'user 2'
-    }), new User({
-      name: 'asdfg'
-    }), new User({
-      name: 'fdsa'
-    })];
+  getUserListByRoomId(id: number) {
+    return Observable.create((observer) => {
+        this.socket.emit(this.config.events.room.willGetById, {
+          id: id,
+          model: User
+        });
+
+        this.socket.on(this.config.events.room.didGetById, (room) => {
+          observer.next(room.users);
+          observer.complete();
+        });
+    }).toPromise();
   }
 
   kickUser(roomId: number, user: User) {
+    this.socket.emit(this.userEvents.willKick, user);
     console.log('kicking', user, 'from', roomId);
   }
 }
