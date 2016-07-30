@@ -1,4 +1,5 @@
 var argv = require('yargs').argv;
+var config = require('../../config/config');
 
 module.exports = class SocketServer {
   constructor() {
@@ -8,15 +9,8 @@ module.exports = class SocketServer {
     this.go();
   }
   initializeEvents() {
-    this.io.on('connection', function(socket) {
-      console.log('User Connected');
-      socket.on('event', function (data) {
-        console.log(data);
-      });
-      socket.on('disconnect', function () {
-        console.log('User Disconnected');
-      });
-    }.bind(this));
+      var Socket = require('./socket');
+      new Socket(config, this.io);
   }
   go() {
     this.server.listen(argv.socketPort || 3031);

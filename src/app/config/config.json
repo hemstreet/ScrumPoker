@@ -19,16 +19,5 @@
     "80",
     "∞",
     "N/A"
-  ],
-  "events" : {
-    "room": {
-      "getRoomById": "ROOM:getById",
-      "getRooms" : "ROOM:getRooms"
-    },
-    "user" : {
-      "getUserById" : "USER:getUserById",
-      "userDidJoinById" : "USER:didJoinRoomById",
-      "userDidVote" : "USER:didVote"
-    }
-  }
+  ]
 }

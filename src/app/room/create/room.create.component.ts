@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RoomCreateViewModel } from './room.create.viewmodel';
+import { SocketService } from '../../socket';
+import { config } from '../../config';
 
 @Component({
   selector: 'createRoom',
@@ -9,13 +11,31 @@ import { RoomCreateViewModel } from './room.create.viewmodel';
 
 export class CreateRoomComponent {
   model: RoomCreateViewModel;
-  constructor() {
+  config: any;
+  roomEvents: any;
+  socket: SocketService;
+  constructor(private socketService: SocketService) {
+    this.config = config.config;
     this.model = new RoomCreateViewModel();
+    this.roomEvents = this.config.events.room;
+    this.socket = this.socketService.get();
+    this.initializeEvents();
+  }
+
+  initializeEvents() {
+    this.socket.on(this.roomEvents.didCreate, (data) => {
+      this.didCreate(data);
+    });
   }
 
   submit() {
-    // console.log(this.model);
 
-    return false;
+    this.socket.emit(this.roomEvents.willCreate, {
+      user: this.model
+    });
+  }
+
+  didCreate(data) {
+
   }
 }

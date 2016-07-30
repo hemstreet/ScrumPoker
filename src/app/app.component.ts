@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   model: AppViewModel;
   constructor(
     private socketService: SocketService) {
+    this.socketService; // Quiets unused param to constructor IDE check
   };
 
   ngOnInit() {

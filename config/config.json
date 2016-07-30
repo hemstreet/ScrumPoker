@@ -1,0 +1,24 @@
+{
+  "debug": true,
+  "events" : {
+    "room": {
+      "willCreate": "ROOM:willCreate",
+      "didCreate": "ROOM:didCreate",
+      "willJoin": "ROOM:willJoin",
+      "didJoin": "ROOM:didJoin",
+      "willGetRoomById": "ROOM:willGetById",
+      "didGetRoomById": "ROOM:didlGetById",
+      "willGetRooms" : "ROOM:willGetRooms",
+      "didGetRooms" : "ROOM:didGetRooms"
+    },
+    "socket": {
+      "start": "connection",
+      "end": "disconnect"
+    },
+    "user" : {
+      "getUserById" : "USER:getUserById",
+      "userDidJoinById" : "USER:didJoinRoomById",
+      "userDidVote" : "USER:didVote"
+    }
+  }
+}

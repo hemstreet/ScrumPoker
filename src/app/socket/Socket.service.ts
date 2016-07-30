@@ -27,11 +27,21 @@ export class SocketService {
     // Save our socket for later
     this.socket = socket;
   }
+
+  get(): SocketService {
+    return this.socket;
+  }
   emit(name: string, data: any) {
+    if (this.config.debug) {
+      console.log(name, data);
+    }
+
     this.socket.emit(name, data);
   }
   on(name: string, callback: any) {
+    if (this.config.debug) {
+      console.log('On', name);
+    }
     this.socket.on(name, callback);
   }
-
 }

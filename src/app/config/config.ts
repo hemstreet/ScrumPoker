@@ -1,7 +1,10 @@
 class Config {
   config: any;
   constructor() {
-    this.config = require('./config.json');
+    let config = require('./config.json');
+    let eventConfig = require('../../../config/config');
+    Object.assign(config, eventConfig);
+    this.config = config;
   }
   get() {
     return this.config;
