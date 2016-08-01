@@ -38,7 +38,7 @@ export class UserService {
     return this.currentUser;
   }
 
-  getUserListByRoomId(id: number) {
+  getUserListByRoomId(id: number): Promise<User[]> {
     return new Promise((resolve) => {
       this.socket.emit(this.config.events.room.willGetById, {
         id: id,
