@@ -23,8 +23,8 @@ export class UserListComponent implements OnInit {
     this.userService.kickUser(1, user);
   }
   ngOnInit() {
-    this.userService.getUserListByRoomId(3).then((data) => {
-      console.log('getUserListById promise', 3, data);
+    this.userService.getUserListByRoomId(3).then((users: User[]) => {
+      this.users = users;
     });
   }
 }

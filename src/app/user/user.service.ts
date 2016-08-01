@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
 import { User } from '../model';
 import { SocketService } from '../socket';
 import { config } from '../config';
@@ -40,17 +39,22 @@ export class UserService {
   }
 
   getUserListByRoomId(id: number) {
-    return Observable.create((observer) => {
-        this.socket.emit(this.config.events.room.willGetById, {
-          id: id,
-          model: User
+    return new Promise((resolve) => {
+      this.socket.emit(this.config.events.room.willGetById, {
+        id: id,
+        model: User
+      });
+
+      this.socket.on(this.config.events.room.didGetById, (room) => {
+        let users = [];
+
+        room.users.forEach((user) => {
+          users.push(new User(user));
         });
 
-        this.socket.on(this.config.events.room.didGetById, (room) => {
-          observer.next(room.users);
-          observer.complete();
-        });
-    }).toPromise();
+        resolve(users);
+      });
+    });
   }
 
   kickUser(roomId: number, user: User) {

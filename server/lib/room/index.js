@@ -18,16 +18,19 @@ module.exports = class Room extends Base {
   }
   willJoin(data) {
     var deferred = q.defer();
-    console.log('Stubbed method willJoin');
+    console.log('Stubbed method ROOM:willJoin');
+    this.willGetById(data.id).then((users) => {
+      deferred.resolve(users);
+    });
     //  do logic, return deferred
-    deferred.resolve(data);
+
     return deferred.promise;
   }
 
   willGetById(data) {
     var deferred = q.defer();
 
-    let room = [];
+    let room = {};
     room.id = data.id;
     room.users = [
       {
