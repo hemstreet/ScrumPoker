@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RoomCreateViewModel } from './room.create.viewmodel';
 import { SocketService } from '../../socket';
 import { config } from '../../config';
+import { UserService } from '../../user';
 
 @Component({
   selector: 'createRoom',
@@ -14,7 +15,10 @@ export class CreateRoomComponent {
   config: any;
   roomEvents: any;
   socket: SocketService;
-  constructor(private socketService: SocketService) {
+  constructor(
+    private socketService: SocketService,
+    private userService: UserService
+  ) {
     this.config = config.config;
     this.model = new RoomCreateViewModel();
     this.roomEvents = this.config.events.room;
@@ -36,6 +40,10 @@ export class CreateRoomComponent {
   }
 
   didCreate(data) {
-    console.log(this.roomEvents.didCreate, data);
+    let user = this.userService.setUser(data.userName);
+    console.log(this.roomEvents.didCreate, {
+      data: data,
+      user: user
+    });
   }
 }

@@ -13,12 +13,11 @@ export class UserService {
     this.config = config.config;
     this.socket = this.socketService.get();
     this.userEvents = this.config.events.user;
-    this.initializeUser();
   }
 
-  initializeUser(): User {
+  setUser(name: string): User {
     this.currentUser = new User({
-      name: 'ourUser'
+      name: name
     });
     return this.currentUser;
   }

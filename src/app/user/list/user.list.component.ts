@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../../model';
 import { UserService } from '../user.service';
 import { SocketService } from '../../socket';
@@ -10,9 +10,9 @@ import { config } from '../../config';
   styleUrls: ['./user.list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  users: User[];
   socket: SocketService;
   config: any;
+  @Input() users: User[];
   constructor(
     private userService: UserService,
     private socketService: SocketService) {
@@ -23,8 +23,6 @@ export class UserListComponent implements OnInit {
     this.userService.kickUser(1, user);
   }
   ngOnInit() {
-    this.userService.getUserListByRoomId(3).then((users: User[]) => {
-      this.users = users;
-    });
+
   }
 }

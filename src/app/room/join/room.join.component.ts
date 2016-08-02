@@ -3,6 +3,7 @@ import { RoomJoinViewModel } from './room.join.viewmodel';
 import { config } from '../../config';
 import { Router } from '@angular/router';
 import { SocketService } from '../../socket';
+import { UserService} from '../../user';
 
 @Component({
   selector: 'joinRoom',
@@ -13,15 +14,19 @@ import { SocketService } from '../../socket';
 export class JoinRoomComponent {
   model: RoomJoinViewModel;
   config: any;
-  constructor(private router: Router, private socketService: SocketService) {
+  constructor(
+    private router: Router,
+    private socketService: SocketService,
+    private userService: UserService) {
     this.config = config.config;
     this.model = new RoomJoinViewModel();
   }
 
   submit() {
+    let user = this.userService.setUser(this.model.username);
     this.socketService.emit(this.config.events.room.willJoin, {
       id: this.model.roomId,
-      model: this.model
+      model: user
     });
     this.router.navigate(['/room', this.model.roomId]);
   }
