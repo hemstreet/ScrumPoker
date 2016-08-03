@@ -16,7 +16,7 @@ module.exports = class Room extends Base {
 
     return deferred.promise;
   }
-  willJoin(data) {
+  willJoinById(data) {
     var deferred = q.defer();
     console.log('Stubbed method ROOM:willJoin');
     this.willGetById(data.id).then((users) => {

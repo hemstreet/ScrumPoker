@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RoomService } from './room.service';
 import {VoteComponent} from '../vote/vote.component';
 import { UserListComponent, UserService } from '../user';
-import { User } from '../model';
+import { Room, User } from '../model';
 import { SocketService } from '../socket';
 import { config } from '../config';
 
@@ -24,22 +24,31 @@ export class RoomComponent implements OnInit {
   id: number;
   config: any;
   socket: SocketService;
+  room: Room;
   users: User[];
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private roomService: RoomService,
     private socketService: SocketService,
-    private userService: UserService) {
-
+    private router: Router,
+    private userService: UserService
+  ) {
     this.config = config.config;
     this.id = +this.route.snapshot.params['id'];
     this.socket = this.socketService.get();
   }
 
   ngOnInit() {
-    this.userService.getUserListByRoomId(3).then((users: User[]) => {
-      this.users = users;
-    });
+
+    if (!this.userService.getUser()) {
+      console.log('Redirecting anonymous user from requireAuth Component');
+      // User is not set, redirect home
+      this.router.navigate(['/']);
+    }
+
+    this.userService.getUserListByRoomId(3).subscribe(
+      (users) => this.users = users,
+      (err) => console.log(err)
+    );
   }
 }

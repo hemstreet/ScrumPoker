@@ -23,11 +23,15 @@ export class JoinRoomComponent {
   }
 
   submit() {
-    let user = this.userService.setUser(this.model.username);
-    this.socketService.emit(this.config.events.room.willJoin, {
-      id: this.model.roomId,
-      model: user
-    });
-    this.router.navigate(['/room', this.model.roomId]);
+    this.userService.setUser(this.model.username).subscribe(
+      (user) => {
+        this.socketService.emit(this.config.events.room.willJoinById, {
+          id: this.model.roomId,
+          user: user
+        });
+        this.router.navigate(['/room', this.model.roomId]);
+      }
+    );
+
   }
 }

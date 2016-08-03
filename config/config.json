@@ -4,8 +4,8 @@
     "room": {
       "willCreate": "ROOM:willCreate",
       "didCreate": "ROOM:didCreate",
-      "willJoin": "ROOM:willJoin",
-      "didJoin": "ROOM:didJoin",
+      "willJoinById": "ROOM:willJoinById",
+      "didJoinById": "ROOM:didJoinById",
       "willGetById": "ROOM:willGetById",
       "didGetById": "ROOM:didGetById",
       "willGetRooms" : "ROOM:willGetRooms",

@@ -2,33 +2,61 @@ import { Injectable } from '@angular/core';
 import { Room, User } from '../model';
 import { SocketService } from '../socket/Socket.service';
 import { config } from '../config/config';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class RoomService {
   config: any;
   roomEvents: any;
-  constructor(private socket: SocketService) {
+  room: Room;
+  constructor(
+    private socket: SocketService) {
     this.config = config.config;
     this.roomEvents = this.config.events.room;
   }
-  userCanJoinRoom(): boolean {
-    // Check to see if the user has access to join that teams room
-    return true;
-  }
-  join(id: number, user: User) {
 
-    if (!this.userCanJoinRoom()) () => {
-      console.log('Can\'t join room');
-      return;
-    };
+  isParticipant(id: number)  {
+    return id === this.room.get('id');
   }
 
-  create(user: User): Room {
-    let room = new Room({
-      id: 123
+  joinById(id: number, user: User): Promise<Room> {
+
+    return new Promise((resolve) => {
+      if (this.room) {
+        return this.room;
+      }
+      this.socket.emit(this.roomEvents.willJoinById, {
+        id: id,
+        user: user
+      });
+
+      this.socket.on(this.roomEvents.didJoinById, (roomData) => {
+        let room = new Room(roomData);
+
+        // Cache results
+        this.room = room;
+        resolve(room);
+      });
     });
+  }
 
-    return room;
+  create(user: User): Observable<Room> {
+
+    return Observable.create((observer) => {
+      if (this.room) {
+        observer.next(<Room>this.room);
+        return;
+      }
+
+      this.socket.emit(this.config.events.room.willCreate, {
+        user: user
+      });
+
+      this.socket.on(this.config.events.room.didDid, (room) => {
+        this.room = room;
+        observer.next(<Room>room);
+      });
+    });
   }
 
   getRooms(): Room[] {

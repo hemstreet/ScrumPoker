@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../model';
 import { SocketService } from '../socket';
 import { config } from '../config';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class UserService {
@@ -15,21 +16,15 @@ export class UserService {
     this.userEvents = this.config.events.user;
   }
 
-  setUser(name: string): User {
-    this.currentUser = new User({
-      name: name
-    });
-    return this.currentUser;
-  }
+  // This will be modified later to accept users accounts from the server
+  setUser(name: string): Observable<User> {
+    return Observable.create((observer) => {
+      let user = <User>new User({
+        name: name
+      });
 
-  getUserById(id: number): User {
-    this.socketService.emit(this.userEvents,  {
-      id: id
-    });
-
-    // Simulated user return
-    return new User({
-      name: 'adsf'
+      this.currentUser = user;
+      observer.next(user);
     });
   }
 
@@ -37,11 +32,19 @@ export class UserService {
     return this.currentUser;
   }
 
-  getUserListByRoomId(id: number): Promise<User[]> {
-    return new Promise((resolve) => {
+
+  usersByRoom(id: number): Observable<User[]> {
+    return Observable.create((observer) => {
+
+      // observer.next(<User[]>users);
+
+    });
+  }
+
+  getUserListByRoomId(id: number): Observable<User[]> {
+    return Observable.create((observer) => {
       this.socket.emit(this.config.events.room.willGetById, {
-        id: id,
-        model: User
+        id: id
       });
 
       this.socket.on(this.config.events.room.didGetById, (room) => {
@@ -51,7 +54,8 @@ export class UserService {
           users.push(new User(user));
         });
 
-        resolve(users);
+        observer.next(<User[]>users);
+        return users;
       });
     });
   }
